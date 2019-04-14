@@ -53,6 +53,7 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
+   return /^.*p.t\w*/;
    throw new Error('Not implemented');
 }
 
@@ -72,6 +73,7 @@ function getRegexForPitSpot() {
  * @return {RegExp}
  */
 function getRegexForIPv4() {
+   return /(^)([0-2]?\d{1,2}\.){3}[0-2]?\d{1,2}$/;
    throw new Error('Not implemented');
 }
 
