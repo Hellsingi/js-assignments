@@ -219,6 +219,10 @@ function getRectangleString(width, height) {
     // return String.fromCharCode(9484) + String.fromCharCode(9472).repeat(x-2) + String.fromCharCode(9488) + "\n" +
     // (String.fromCharCode(9474) + " ".repeat(x-2) + String.fromCharCode(9474) + "\n").repeat(y-2) +
     // String.fromCharCode(9492) + String.fromCharCode(9472).repeat(x-2) + String.fromCharCode(9496);
+    let up = '┌' + '─'.repeat(width - 2) + '┐\n';
+    let mid = '│' + ' '.repeat(width - 2) + '│\n';
+    let bottom = '└' + '─'.repeat(width - 2) + '┘\n';
+    return up + mid.repeat(height - 2) + bottom;
     throw new Error('Not implemented');
 }
 
@@ -292,6 +296,45 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
+    let pos = 0;
+    let num = value.slice(0,value.length - 1);
+    let suit = value.slice(-1);
+    switch(num){
+        case 'A': pos = 0;
+            break;
+        case '2': pos = 1;
+            break;
+        case '3': pos = 2;
+            break;
+        case '4': pos = 3;
+            break;
+        case '5': pos = 4;
+            break;
+        case '6': pos = 5;
+            break;
+        case '7': pos = 6;
+            break;
+        case '8': pos = 7;
+            break;
+        case '9': pos = 8;
+            break;
+        case '10': pos = 9;
+            break;
+        case 'J': pos = 10;
+            break;
+        case 'Q': pos = 11;
+            break;
+        case 'K': pos = 12;
+            break;
+    }
+
+    switch(suit){
+        case '♣': return pos;
+        case '♦': return (pos + 13);
+        case '♥': return (pos + 26);
+        case '♠' : return (pos + 39);
+    }
+
     throw new Error('Not implemented');
 }
 
