@@ -601,6 +601,9 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
+   let newArr = [];
+   arr.map(childrenSelector).map( element => newArr = newArr.concat(element));
+   return newArr;
    throw new Error('Not implemented');
 }
 
@@ -641,6 +644,18 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
+   if(arr.length < 2){
+      return arr;
+   }
+   let middle = Math.trunc(arr.length / 2);
+   let leftHalf = arr.slice(0, middle);
+   let rightHalf = arr.slice(-middle);
+   if(arr.length % 2 === 0){
+      return rightHalf.concat(leftHalf);
+   }
+   else{
+      return rightHalf.concat(arr[middle]).concat(leftHalf);
+   }
    throw new Error('Not implemented');
 }
 
